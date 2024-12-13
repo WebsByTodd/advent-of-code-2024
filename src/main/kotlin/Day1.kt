@@ -1,27 +1,24 @@
 import java.io.File
 import kotlin.math.abs
 
-class Day1(private val fileName: String) {
+class Day1(fileName: String) {
 
   private val leftList = mutableListOf<Int>()
   private val rightList = mutableListOf<Int>()
   private var isDebug = false
   private val rightMap = mutableMapOf<Int, Int>()
 
-  private fun readInput() {
+  init {
     val file = File(fileName)
     printDebug("*****INPUT******")
     file.forEachLine {
       printDebug(it)
       val numbers = it.split("\\s+".toRegex()).map { it.toInt() }
+      check(numbers.size == 2) { "Invalid input. Expected 2 numbers, got $numbers" }
       leftList.add(numbers[0])
       val rightListNum = numbers[1]
       rightList.add(rightListNum)
-      if (rightMap.containsKey(rightListNum)) {
-        rightMap[rightListNum] = rightMap[rightListNum]!! + 1
-      } else {
-        rightMap[rightListNum] = 1
-      }
+      rightMap.compute(rightListNum) { _, count -> count?.plus(1) ?: 1 }
     }
     printDebug("*****INPUT******")
   }
@@ -36,39 +33,9 @@ class Day1(private val fileName: String) {
     }
   }
 
-  fun part1() {
-    readInput()
-    leftList.sort()
-    rightList.sort()
-    var totalDistance = 0
-    for (i in 0..<leftList.size) {
-      val leftNum = leftList[i]
-      val rightNum = rightList[i]
-      val distance = abs(rightNum - leftNum)
-      totalDistance += distance
-    }
-    println("******************************")
-    println("******************************")
-    println("Total Distance is $totalDistance")
-    println("******************************")
-    println("******************************")
-  }
+  fun part1() = leftList.sorted().zip(rightList.sorted()).sumOf { abs(it.first - it.second) }
 
-  fun part2() {
-    readInput()
-    var similarityScore = 0
-    for (i in 0..<leftList.size) {
-      val leftNum = leftList[i]
-      if (!rightMap.containsKey(leftNum)) {
-        continue
-      }
-      val similarity = leftNum * rightMap[leftNum]!!
-      similarityScore += similarity
-    }
-    println("******************************")
-    println("******************************")
-    println("Total Similarity is $similarityScore")
-    println("******************************")
-    println("******************************")
-  }
+  fun part2() = leftList.filter { rightMap.containsKey(it) }.sumOf { it * rightMap[it]!! }
+
+  fun part2b() = leftList.mapNotNull { rightMap[it]?.let { count -> it * count } }.sum()
 }
