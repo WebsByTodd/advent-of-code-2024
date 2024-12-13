@@ -1,32 +1,52 @@
-### IntelliJ IDEA ###
+# Gradle-specific files
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar # Keep the Gradle wrapper JAR in version control
+gradle-app.setting
+
+# Kotlin/Java build output
 out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-
-### Kotlin ###
-.kotlin
-
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
 bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# Kotlin compiler daemon session files
+.kotlin/sessions/
 
-### VS Code ###
-.vscode/
 
-### Mac OS ###
+# IntelliJ IDEA / Android Studio
+.idea/
+*.iml
+*.ipr
+*.iws
+.idea_modules/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries/
+.idea/**/shelf/
+.idea/**/vcs.xml
+.idea/**/modules.xml
+.idea/libraries/
+.idea/**/gradle.xml
+
+# OS-specific files
 .DS_Store
+Thumbs.db
+*.swp
+
+# Logs and reports
+*.log
+*.pid
+*.hprof
+/test-results
+/test-output
+/test-logs
+/reports
+
+# IDE-specific caches
+.idea/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries/
+.idea/shelf/
+*.iml
+*.ipr
