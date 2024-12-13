@@ -1,13 +1,13 @@
-import org.junit.jupiter.api.Assertions.*
 import kotlin.test.Test
+import org.junit.jupiter.api.Assertions.*
 
 class SampleTest {
 
-    private val testSample: Sample = Sample()
+  private val testSample: Sample = Sample()
 
-    @Test
-    fun testSum() {
-        val expected = 42
-        assertEquals(expected, testSample.sum(40, 2))
-    }
+  @Test
+  fun testSum() {
+    val expected = 42
+    assertEquals(expected, testSample.sum(40, 2))
+  }
 }
