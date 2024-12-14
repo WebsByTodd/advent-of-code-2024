@@ -11,5 +11,4 @@ class Day2Test {
         expectSelfie(day2.part1()).toBe(479)
         expectSelfie(day2.part2()).toBe(531)
     }
-
 }
