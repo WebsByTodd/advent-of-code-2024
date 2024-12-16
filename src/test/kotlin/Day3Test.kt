@@ -10,6 +10,6 @@ class Day3Test {
         expectSelfie(day3Test2.part2()).toBe(48)
         val day3 = Day3("src/main/resources/day3.txt")
         expectSelfie(day3.part1()).toBe(168_539_636)
-        expectSelfie(day3.part2()).toBe(102_631_226)
+        expectSelfie(day3.part2()).toBe(97_529_391)
     }
 }

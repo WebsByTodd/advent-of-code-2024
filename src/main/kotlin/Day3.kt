@@ -20,10 +20,10 @@ class Day3(private val fileName: String) {
   fun part2(): Int {
     val file = File(fileName)
     var sum = 0
+    var isCounting = true
     file.forEachLine { line ->
       val regex = Regex("""mul\(\d+,\d+\)|do\(\)|don't\(\)""")
       val matches = regex.findAll(line)
-      var isCounting = true
       for (match in matches) {
         val value = match.value
         when (value) {
